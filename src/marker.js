@@ -1,6 +1,6 @@
-const mapboxgl = require("mapbox-gl");
+const { Marker } = require("mapbox-gl");
 
-module.exports = function buildMarker(lad, long, type){
+function buildMarker(lad, long, type){
     let markerDom = document.createElement('div');
     markerDom.style.width = "32px";
     markerDom.style.height = "39px";
@@ -14,6 +14,7 @@ module.exports = function buildMarker(lad, long, type){
     }
 
 
-    let marker = new mapboxgl.Marker(markerDom).setLngLat([lad, long]).addTo(map);
-    return marker;
+    return new Marker(markerDom).setLngLat([lad, long]);
 }
+
+module.exports = buildMarker;
